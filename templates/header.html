@@ -33,26 +33,46 @@
         <div class="text-end">
 
 
- <!--Sign In Button Start-->
+ <!--Name Display Code Start-->
 
- <a class="btn btn-primary" href="/login" role="button">Link</a>
+{% if user.is_authenticated %}
 
+  <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+    <li class="nav-item dropdown">
+     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Welcome {{request.user}}
+     </a>
+     <ul class="dropdown-menu dropdown-menu-dark">
+       <li><a class="dropdown-item" href="/logout">Logout</a></li>  
+       <li><a class="dropdown-item" href="/cart">Cart</a></li> 
+     </ul>
+  </li>
+</ul> 
+{%else%}
+
+
+<!--End Code-->
+
+
+ <a button type="button" class="btn btn-outline-light " href="/login" role="button">Login</a>
+
+{% endif %}
+</li>
+</ul>
  <!--Sign In Button Close-->
 
 
-
-<!--Sign Up Button Start-->
-
-<a class="btn btn-primary" href="/signup" role="button">Link</a>
-
-
-  <!--Sign Up Button Close-->
 
 
         </div>
       </div>
     </div>
+
+
+    
   </header>
+
+
 
 
 

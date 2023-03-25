@@ -1,10 +1,9 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required
-# Create your views here.
-@login_required(login_url='login')
 
+# Create your views here.
 
 
 def index(request):
@@ -30,8 +29,12 @@ def checkout(request):
 def bicyclelist(request):
     return render(request, 'bicyclelist.html')
 
+def cart(request):
+    return render(request, 'cart.html')
 
 
+
+#sign up
 
 def SignupPage(request):
     if request.method=='POST':
@@ -41,17 +44,16 @@ def SignupPage(request):
         pass2=request.POST.get('password2')
 
         if pass1!=pass2:
-            return HttpResponse("Your password and confrom password are not Same!!")
+           messages.error(request,'Your password and confirm password are not Same!!')
         else:
 
             my_user=User.objects.create_user(uname,email,pass1)
             my_user.save()
             return redirect('login')
-        
-
-
-
     return render (request,'signup.html')
+
+
+# Login 
 
 def LoginPage(request):
     if request.method=='POST':
@@ -62,10 +64,15 @@ def LoginPage(request):
             login(request,user)
             return redirect('home')
         else:
-            return HttpResponse ("Username or Password is incorrect!!!")
+            messages.error(request,'Invalid Credentials')
 
     return render (request,'login.html')
 
+
+
+
+#Logout
+
 def LogoutPage(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')

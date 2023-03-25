@@ -1,5 +1,18 @@
 
 {% include "header.html" %}
+
+
+
+{% for messages in messages%} 
+<div class="alert alert-{{messages.tag}} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{messages}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {%endfor%}  
+
+
 {% block content %}
 
 
