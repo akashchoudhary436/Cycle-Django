@@ -3,10 +3,12 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Contact
+from .models import Product
 
 
 # View function for rendering index page
 def index(request):
+    products = Product.objects.all()
     return render(request, 'index.html')
 
 
@@ -65,7 +67,9 @@ def invoice(request):
 
 # View function for rendering bicycle list page
 def bicyclelist(request):
-    return render(request, 'bicyclelist.html')
+    products = Product.objects.all()
+    context = {'products': products}
+    return render(request,'bicyclelist.html', context)
 
 
 # View function for rendering cart page
@@ -124,3 +128,7 @@ def LoginPage(request):
 def LogoutPage(request):
     logout(request)
     return redirect('home')
+
+
+
+

@@ -1,17 +1,47 @@
-<title> Bicycle List </title>
-{% extends 'base.html' %}
-
-{% block content %}
-
+<title>Bicycle List</title>
+{% extends 'base.html' %} {% block content %}
 
 <body>
-Bicycle List
+  <section style="background-color: #eee">
+    <div class="container py-5">
+      <div class="row">
+        {% for prod in products %}
+
+        <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+          <div class="card">
+            <div class="d-flex justify-content-between p-3">
+              <h4 class="mb-0 fw-bold">{{ prod.product_name }}</h4>
+            </div>
+            <img
+              src="{{ prod.image.url }}"
+              class="card-img-top"
+              alt="{{ prod.product_name }}"
+            />
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <p class="small"></p>
+              </div>
+              <div class="d-flex justify-content-between mb-3">
+                <h5 class="mb-0">{{ prod.product_name }}</h5>
+                <h5 class="text-dark mb-0">Rs: {{ prod.product_price }}</h5>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <p class="text-muted mb-0">
+                  Available:
+                  <span class="fw-bold">{{ prod.product_quantity }}</span>
+                </p>
+                <div class="ms-auto text-warning">
+                  <a class="btn btn-primary" href="{% url 'checkout' %}?product={{ prod.id }}" role="button">Add to Cart</a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </body>
 
-
 {% endblock %}
-
-
-
-
-
