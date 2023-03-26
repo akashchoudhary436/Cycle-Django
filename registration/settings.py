@@ -1,21 +1,28 @@
 
-
 import os
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+
+# The secret key is used for cryptographic signing, and should be kept secret.
+# In production, it should be set as an environment variable, not hardcoded in the settings file.
 SECRET_KEY = 'django-insecure-l(z=pa7_b5rghe!k*met$5m#9=ygi4_cnt&43ws*b*-jy08k=c'
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG mode should never be enabled in a production environment, as it can expose sensitive information.
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# By default, Django automatically appends a trailing slash to URLs. 
+# Setting APPEND_SLASH to False will disable this behavior.
+APPEND_SLASH = False
 
+# ALLOWED_HOSTS is a list of valid hostnames for the site. 
+# In production, it should be set to the domain name(s) the site will be served from.
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -39,6 +46,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# The root URL configuration for the project.
 ROOT_URLCONF = 'registration.urls'
 
 TEMPLATES = [
@@ -57,12 +65,13 @@ TEMPLATES = [
     },
 ]
 
+# The WSGI application to use.
 WSGI_APPLICATION = 'registration.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# The DATABASES setting defines the database connections for the project.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,10 +79,10 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
+# The AUTH_PASSWORD_VALIDATORS setting defines the validators that are run when a user sets a password.
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -109,6 +118,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MESSAGE_TAGS = {
+   messages.ERROR: 'danger'
+
+}
 
 STATICFILES_DIRS = [
     BASE_DIR,"media"

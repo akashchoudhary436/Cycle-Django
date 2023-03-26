@@ -12,6 +12,7 @@
 
 
 
+
 <!--Nav Bar Code-->
 
   <header class="p-3 text-bg-dark">
@@ -23,7 +24,7 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <img src="/static/logo.jpg" alt="Logo" width="90" height="40" class="me-2">
-          <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
           <li><a href="/aboutus" class="nav-link px-2 text-white">About Us</a></li>
           <li><a href="/bicyclelist" class="nav-link px-2 text-white">Bicycle List</a></li>
           <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
@@ -37,16 +38,15 @@
 
 {% if user.is_authenticated %}
 
-
-
   <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
     <li class="nav-item dropdown">
      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Welcome <b>{{ request.user|upper }}</b>
      </a>
      <ul class="dropdown-menu shadow w-500px dropdown-menu-dark" data-bs-theme="dark">
-       <li><a class="dropdown-item rounded-5 " href="/logout">Logout</a></li>  
+         
        <li><a class="dropdown-item rounded-5" href="/cart">Cart</a></li> 
+       <li><a class="dropdown-item rounded-5 " href="/logout">Logout</a></li> 
      </ul>
   </li>
 </ul> 
@@ -61,15 +61,12 @@
 
 <!--End Code-->
 
-
  <a button type="button" class="btn btn-outline-light " href="/login" role="button">Login</a>
 
 {% endif %}
 </li>
 </ul>
  <!--Sign In Button Close-->
-
-
 
 
         </div>

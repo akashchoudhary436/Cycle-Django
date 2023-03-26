@@ -6,10 +6,11 @@ from app1 import views
 
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='home'),
-    path('contact/',views.contact,name='contact'),
+     path('contact/', views.contact, name='contact'),
     path('faqs/',views.faqs,name='faqs'),
     path('aboutus/',views.aboutus,name='about'),
     path('bicyclelist/',views.bicyclelist,name='bicyclelist'),
@@ -18,7 +19,7 @@ urlpatterns = [
     path('signup/',views.SignupPage,name='signup'),
     path('login/',views.LoginPage,name='login'),
     path('logout/',views.LogoutPage,name='logout'),
-    
+    path('invoice/',views.invoice,name='inovice'),
 
   
     

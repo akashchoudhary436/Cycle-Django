@@ -1,0 +1,80 @@
+<title> Invoice </title>
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="pb-4">
+  <div class="bg-white border rounded-5">
+    
+    <section class="p-4 d-flex justify-content-center w-100">
+      <div class="card">
+        <div class="card-body mx-4">
+          <div class="container">
+            <img src="/static/logo.jpg" alt="Logo" width="100" height="60" class="me-2">
+            <p class="my-5 mx-5" style="font-size: 30px;"><strong>Thank for your purchase</strong></p>
+
+            <div class="row">
+              <ul class="list-unstyled">
+
+                <!--Customer name display from database-->
+                <li class="text-black"><b> {{ request.user|upper }} </b></li>
+                
+                <li class="text-muted mt-1"><span class="text-black">Invoice</span> Invoice no</li>
+                <li class="text-black mt-1">Date of purchase</li>
+              </ul>
+              <hr>
+              <div class="col-xl-10">
+                <p>Pro Package</p>
+              </div>
+              <div class="col-xl-2">
+                <p class="float-end">Rs: Cost of goods
+                </p>
+              </div>
+              <hr>
+            </div>
+            <div class="row">
+              <div class="col-xl-10">
+                <p>Consulting</p>
+              </div>
+              <div class="col-xl-2">
+                <p class="float-end">$Tax
+                </p>
+              </div>
+              <hr>
+            </div>
+            <div class="row">
+              <div class="col-xl-10">
+                <p>Support</p>
+              </div>
+              <div class="col-xl-2">
+                <p class="float-end">$10.00
+                </p>
+              </div>
+              <hr style="border: 2px solid black;">
+            </div>
+            <div class="row text-black">
+
+              <div class="col-xl-12">
+                <p class="float-end fw-bold">Total: $10.00
+                </p>
+              </div>
+              <hr style="border: 2px solid black;">
+            </div>
+            <div class="text-center" style="margin-top: 90px;">
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+  
+    
+    
+  </div>
+</section>
+
+
+{% endblock %}
