@@ -18,7 +18,7 @@ DEBUG = True
 
 # By default, Django automatically appends a trailing slash to URLs. 
 # Setting APPEND_SLASH to False will disable this behavior.
-APPEND_SLASH = False
+
 
 # ALLOWED_HOSTS is a list of valid hostnames for the site. 
 # In production, it should be set to the domain name(s) the site will be served from.

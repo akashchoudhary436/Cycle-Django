@@ -4,7 +4,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Contact
 from .models import Product
-
+import json
+from math import ceil
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 # View function for rendering index page
 def index(request):
