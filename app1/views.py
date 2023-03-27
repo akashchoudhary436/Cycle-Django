@@ -3,11 +3,13 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .models import Contact
-from .models import Product
-import json
-from math import ceil
+from .models import Product,Cart,CartItem
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 # View function for rendering index page
 def index(request):
@@ -76,8 +78,12 @@ def bicyclelist(request):
 
 
 # View function for rendering cart page
+@login_required
 def cart(request):
-    return render(request, 'cart.html')
+    cart_items = CartItem.objects.filter(cart__user=request.user)
+    context = {'items': cart_items}
+    return render(request, 'cart.html', context)
+
 
 
 # View function for rendering signup page and processing form submission
@@ -134,4 +140,24 @@ def LogoutPage(request):
 
 
 
+@login_required
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, product_id=product_id)
 
+    try:
+        cart = Cart.objects.get(user=request.user)
+    except Cart.DoesNotExist:
+        cart = Cart.objects.create(user=request.user)
+        
+    cart_item, created = CartItem.objects.get_or_create(product=product, cart=cart)
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+    # Save the product image to the cart item
+    if product.image:
+        cart_item.image = product.image
+        cart_item.save()
+    
+   
+
+    return redirect('cart')

@@ -130,3 +130,5 @@ MESSAGE_TAGS = {
 STATICFILES_DIRS = [
     BASE_DIR,"media"
 ]
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
