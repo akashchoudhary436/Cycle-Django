@@ -1,0 +1,86 @@
+body {
+    background-image: url('/media/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #222;
+    color: #eee;
+    font-family: sans-serif;
+  }
+  
+  header {
+    background-color: #111;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  nav a {
+    color: #eee;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  
+  nav a:hover {
+    color: yellow;
+  }
+  
+  main {
+    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    animation: fade-in 1s ease;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    animation: fade-in 1s ease;
+  }
+  
+  section {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #111;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  

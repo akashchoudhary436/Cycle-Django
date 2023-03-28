@@ -13,61 +13,74 @@
 
 <!--Nav Bar Code-->
 
-  <header class="p-3 text-bg-dark">
-    <div class="container-fluid">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <img src="/media/logo.jpg" alt="Logo" width="90" height="40" class="me-2">
-          <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
-          <li><a href="/aboutus" class="nav-link px-2 text-white">About Us</a></li>
-          <li><a href="/bicyclelist" class="nav-link px-2 text-white">Bicycle List</a></li>
-          <li><a href="/faqs" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="/contact" class="nav-link px-2 text-white">Contact Us </a></li>
-        </ul>
+<style>
+  header {
+    background-color: #333;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+  }
 
-        <div class="text-end">
+  header a.nav-link {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .nav .active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: white;
+  }
+  .nav-link {
+    color: white;
+  }
+  
+  header a.nav-link:hover {
+    color: #ffc107;
+    transition: color 0.3s ease-in-out;
+  }
+</style>
 
 
- <!--Name Display Code Start-->
 
-{% if user.is_authenticated %}
 
-  <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-    <li class="nav-item dropdown">
-     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Welcome <b>{{ request.user|upper }}</b>
-     </a>
-     <ul class="dropdown-menu shadow w-500px dropdown-menu-dark" data-bs-theme="dark">
-         
-       <li><a class="dropdown-item rounded-5" href="/cart">Cart</a></li> 
-       <li><a class="dropdown-item rounded-5 " href="/logout">Logout</a></li> 
-     </ul>
-  </li>
-</ul> 
-{%else%}
+<header class="p-3 text-bg-dark animate__animated animate__fadeInDown">
+  <div class="container-fluid">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+      </a>
 
-   
-<!--End Code-->
-
- <a button type="button" class="btn btn-outline-light " href="/login" role="button">Login</a>
-
-{% endif %}
-</li>
+<!-- HTML code -->
+<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+  <img src="/media/logo.jpg" alt="Logo" width="90" height="40" class="me-2">
+  <li><a href="/" class="nav-link px-2 text-bg-white {% if request.path == '/' %}active{% endif %}">Home</a></li>
+  <li><a href="/aboutus" class="nav-link px-2 text-bg-white {% if request.path == '/aboutus/' %}active{% endif %}">About Us</a></li>
+  <li><a href="/bicyclelist" class="nav-link px-2 text-bg-white {% if request.path == '/bicyclelist/' %}active{% endif %}">Bicycle List</a></li>
+  <li><a href="/faqs" class="nav-link px-2 text-bg-white {% if request.path == '/faqs/' %}active{% endif %}">FAQs</a></li>
+  <li><a href="/contact" class="nav-link px-2 text-bg-white {% if request.path == '/contact/' %}active{% endif %}">Contact Us</a></li>
 </ul>
- <!--Sign In Button Close-->
 
+      
 
-        </div>
+      <div class="text-end">
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Welcome <b>{{ request.user|upper }}</b>
+            </a>
+            <ul class="dropdown-menu shadow w-500px dropdown-menu-dark" data-bs-theme="dark">
+              <li><a class="dropdown-item rounded-5" href="/cart">Cart</a></li> 
+              <li><a class="dropdown-item rounded-5 " href="/logout">Logout</a></li> 
+            </ul>
+          </li>
+        </ul> 
+        {% else %}
+        <a button type="button" class="btn btn-outline-light " href="/login" role="button">Login</a>
+        {% endif %}
       </div>
     </div>
-
-
-    
-  </header>
+  </div>
+</header>
 
 
 
