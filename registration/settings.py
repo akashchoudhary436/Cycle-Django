@@ -128,7 +128,9 @@ MESSAGE_TAGS = {
 }
 
 STATICFILES_DIRS = [
-    BASE_DIR,"media"
+    BASE_DIR,"static",
 ]
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+
+LOGIN_URL = 'login'

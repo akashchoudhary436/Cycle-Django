@@ -1,35 +1,201 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<a href="{% url 'clear_cart' %}" class="btn btn-secondary">Clear Cart</a>
+<section class="pb-4">
+  <div class="bg-white border rounded-5">
+    <section
+      class="w-100 p-4"
+      style="background-color: #eee; border-radius: 0.5rem 0.5rem 0 0"
+    >
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body p-4">
+              <div class="row">
+                <div class="col-lg-7">
+                  <h5 class="mb-3">
+                    <a href="/bicyclelist/" class="text-body"
+                      ><i class="fas fa-long-arrow-alt-left me-2"></i>Continue
+                      shopping</a
+                    >
+                  </h5>
+                  <hr />
 
-<title>Cart</title>
+                  <div
+                    class="d-flex justify-content-between align-items-center mb-4"
+                  >
+                    <div>
+                      <p class="mb-1">Shopping cart</p>
+                      <p class="mb-0">
+                        You have {{ items.count }} items in your cart
+                      </p>
+                    </div>
+                    <div>
+                      <p class="mb-0">
+                        <span class="text-muted">Sort by:</span>
+                        <a href="#!" class="text-body"
+                          >price <i class="fas fa-angle-down mt-1"></i
+                        ></a>
+                      </p>
+                    </div>
+                  </div>
+                  {% for item in items %}
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          {% if item.image %}
+                          <div>
+                            <img
+                              src="{{ item.image.url }}"
+                              class="img-fluid rounded-3"
+                              alt="{{ item.product.product_name }}"
+                              style="width: 65px"
+                            />
+                          </div>
+                          {% else %}
+                          <p>Your cart is empty</p>
+                          {% endif %}
+                          <div class="ms-3">
+                            <h5>{{ item.product.product_name }}</h5>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <div style="width: 50px">
+                            <h5 class="fw-normal mb-0">{{ item.quantity }}</h5>
+                          </div>
+                          <div style="width: 80px">
+                            <h5 class="mb-0">
+                              Rs: {{ item.product.product_price }}
+                            </h5>
+                          </div>
+                          <form
+                            action="{% url 'delete_from_cart' item.id %}"
+                            method="POST"
+                          >
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">
+                              <i class="fas fa-trash-alt"></i> Remove
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
 
+                <div class="col-lg-5">
+                  <div class="card bg-primary text-white rounded-3">
+                    <div class="card-body">
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                      ></div>
+                      <hr class="my-4" />
 
-{% extends 'base.html' %}
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-2">Renting Cost: {{ total_price }}</p>
+                        <p class="mb-2"></p>
+                      </div>
 
-{% block content %}
+                      <div class="d-flex justify-content-between">
+                        <p class="mb-2">
+                          Security Deposit: {{ security_deposit }}
+                        </p>
+                        <p class="mb-2"></p>
+                      </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h1>Shopping Cart</h1>
-      {% for item in items %}
-      <div class="cart-item">
-        <h2>{{ item.product.product_name }}</h2>
-        <p>Quantity: {{ item.quantity }}</p>
-        <p>Price: {{ item.product.product_price }}</p>
-        {% if item.image %}
-          <img src="{{ item.image.url }}" alt="{{ item.product.product_name }}">
-        {% endif %}
+                      <div class="d-flex justify-content-between mb-4">
+                        <p class="mb-2">Total(Incl. taxes)</p>
+                        <p class="mb-2">Rs: {{ total_price_security}}</p>
+                      </div>
+
+                      <button
+                        type="button"
+                        class="btn btn-info btn-block btn-lg"
+                        onclick="window.location.href='/invoice/'"
+                      >
+                        <div class="d-flex justify-content-between">
+                          <span>Rs: {{ total_price_security}} </span>
+                          <span>
+                            Checkout
+                            <i class="fas fa-long-arrow-alt-right ms-2"></i
+                          ></span>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    {% endfor %}
-    
-    </div>
-    <div class="col-md-4">
-      <h2>Cart Summary</h2>
-      <p>Total Items: {{ items.count }}</p>
-      <a class="btn btn-primary" href="/checkout/" role="button">Check Out</a>
+    </section>
+
+    <div class="p-4 text-center border-top mobile-hidden">
+      <a
+        class="btn btn-link px-3"
+        data-mdb-toggle="collapse"
+        href="#example1"
+        role="button"
+        aria-expanded="false"
+        aria-controls="example1"
+        data-ripple-color="hsl(0, 0%, 67%)"
+      >
+      </a>
     </div>
   </div>
-</div>
+</section>
+<style>
+  /* Increase font size and boldness for product names */
+  .card-body h5 {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
 
+  /* Adjust spacing for quantity and price */
+  .card-body .d-flex {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  /* Remove button outline and adjust padding */
+  button:focus {
+    outline: none;
+  }
+
+  .btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  /* Add padding to total section */
+  .card.bg-primary {
+    padding: 20px;
+  }
+
+  /* Adjust font size for total section */
+  .card.bg-primary h5 {
+    font-size: 1.3rem;
+  }
+
+  /* Adjust font size for checkout button */
+  .btn.btn-info.btn-block.btn-lg {
+    font-size: 1.2rem;
+  }
+  .card.bg-primary.text-white.rounded-3 {
+    background-color: gray;
+  }
+
+  .card-body {
+    max-width: 1000px;
+  }
+
+  /* Remove top border for mobile devices */
+  @media screen and (max-width: 767px) {
+    .mobile-hidden {
+      border-top: none !important;
+    }
+  }
+</style>
 {% endblock %}
-
-

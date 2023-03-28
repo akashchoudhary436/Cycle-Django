@@ -1,0 +1,8 @@
+
+  .custom-container {
+    max-width: 600px;
+    margin: 20 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+  }
