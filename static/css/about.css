@@ -35,11 +35,11 @@ body {
   }
   
   main {
-    margin: 20px;
+    margin: 10px;
   }
   
   h1 {
-    font-size: 36px;
+    font-size: 40px;
     margin-bottom: 10px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     animation: fade-in 1s ease;
@@ -69,9 +69,9 @@ body {
   }
   
   .container {
-    max-width: 1500px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
   }
   
   footer {
