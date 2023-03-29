@@ -16,11 +16,11 @@ SECRET_KEY = 'django-insecure-l(z=pa7_b5rghe!k*met$5m#9=ygi4_cnt&43ws*b*-jy08k=c
 # DEBUG mode should never be enabled in a production environment, as it can expose sensitive information.
 DEBUG = True
 
-# By default, Django automatically appends a trailing slash to URLs. 
+# By default, Django automatically appends a trailing slash to URLs.
 # Setting APPEND_SLASH to False will disable this behavior.
 
 
-# ALLOWED_HOSTS is a list of valid hostnames for the site. 
+# ALLOWED_HOSTS is a list of valid hostnames for the site.
 # In production, it should be set to the domain name(s) the site will be served from.
 ALLOWED_HOSTS = []
 
@@ -118,19 +118,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Managing media 
+# Managing media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 MESSAGE_TAGS = {
-   messages.ERROR: 'danger'
+    messages.ERROR: 'danger'
 
 }
 
 STATICFILES_DIRS = [
-    BASE_DIR,"static",
+    BASE_DIR, "static",
 ]
 
-DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LOGIN_URL = 'login'

@@ -18,7 +18,9 @@ urlpatterns = [
     path('login/', views.LoginPage, name='login'),
     path('logout/', views.LogoutPage, name='logout'),
     path('invoice/', views.invoice, name='inovice'),
-     path('clear-cart/', views.clear_cart, name='clear_cart'),
-    path('add_to_cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
-    path('delete/<int:cart_item_id>/', views.delete_from_cart, name='delete_from_cart')
+    path('clear-cart/', views.clear_cart, name='clear_cart'),
+    path('add_to_cart/<int:product_id>/',
+         views.add_to_cart, name='add_to_cart'),
+    path('delete/<int:cart_item_id>/',
+         views.delete_from_cart, name='delete_from_cart')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

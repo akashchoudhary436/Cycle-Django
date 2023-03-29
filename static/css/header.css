@@ -1,30 +1,30 @@
 /* Style for the logo */
 .logo {
-    width: 90px;
-    height: 40px;
-    margin-right: 10px;
+  width: 90px;
+  height: 40px;
+  margin-right: 10px;
 }
 /* Style for the cart */
 #cart {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Style for the dropdown */
 .dropdown-menu {
-    animation: fadeInDown 0.5s;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+  animation: fadeInDown 0.5s;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 /* Animation keyframes */
 @keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        transform: translate3d(0, -100%, 0);
-    }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
 
-    100% {
-        opacity: 1;
-        transform: none;
-    }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
 }

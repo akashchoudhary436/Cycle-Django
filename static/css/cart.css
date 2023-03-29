@@ -1,51 +1,50 @@
+/* Increase font size and boldness for product names */
+.card-body h5 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
 
-  /* Increase font size and boldness for product names */
-  .card-body h5 {
-    font-size: 1.3rem;
-    font-weight: bold;
-  }
+/* Adjust spacing for quantity and price */
+.card-body .d-flex {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
 
-  /* Adjust spacing for quantity and price */
-  .card-body .d-flex {
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
+/* Remove button outline and adjust padding */
+button:focus {
+  outline: none;
+}
 
-  /* Remove button outline and adjust padding */
-  button:focus {
-    outline: none;
-  }
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
 
-  .btn:not(:disabled):not(.disabled) {
-    cursor: pointer;
-  }
+/* Add padding to total section */
+.card.bg-primary {
+  padding: 20px;
+}
 
-  /* Add padding to total section */
-  .card.bg-primary {
-    padding: 20px;
-  }
+/* Adjust font size for total section */
+.card.bg-primary h5 {
+  font-size: 1.3rem;
+}
 
-  /* Adjust font size for total section */
-  .card.bg-primary h5 {
-    font-size: 1.3rem;
-  }
+/* Adjust font size for checkout button */
+.btn.btn-info.btn-block.btn-lg {
+  font-size: 1.2rem;
+}
+.card.bg-primary.text-white.rounded-3 {
+  background-color: gray;
+}
 
-  /* Adjust font size for checkout button */
-  .btn.btn-info.btn-block.btn-lg {
-    font-size: 1.2rem;
-  }
-  .card.bg-primary.text-white.rounded-3 {
-    background-color: gray;
-  }
+.card-body {
+  max-width: 1000px;
+}
 
-  .card-body {
-    max-width: 1000px;
+/* Remove top border for mobile devices */
+@media screen and (max-width: 767px) {
+  .mobile-hidden {
+    border-top: none !important;
   }
-
-  /* Remove top border for mobile devices */
-  @media screen and (max-width: 767px) {
-    .mobile-hidden {
-      border-top: none !important;
-    }
-  }
+}

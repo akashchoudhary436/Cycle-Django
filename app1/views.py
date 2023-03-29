@@ -194,16 +194,11 @@ def cart(request):
     return render(request, 'cart.html', context)
 
 
-
-
-
 def clear_cart(request):
     cart_items = CartItem.objects.filter(cart__user=request.user)
     cart_items.delete()
     messages.success(request, 'Cart has been cleared successfully!')
     return redirect('cart')
-
-
 
 
 def delete_from_cart(request, cart_item_id):
