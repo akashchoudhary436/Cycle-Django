@@ -1,0 +1,262 @@
+.frame-child,
+.frame-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.frame-child {
+  border-radius: var(--br-31xl);
+  width: 1196px;
+  height: 667px;
+  object-fit: cover;
+}
+.frame-item {
+  border-radius: var(--br-3xs);
+  width: 491px;
+  height: 647px;
+}
+.ellipse-icon,
+.frame-inner {
+  position: absolute;
+  top: 464px;
+  left: 311px;
+  width: 269px;
+  height: 269px;
+}
+.ellipse-icon {
+  top: 438px;
+  left: 283px;
+  width: 138px;
+  height: 138px;
+}
+.contact-information {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  font-size: 28px;
+  font-weight: 600;
+}
+.bxsphone-call-icon,
+.carbonlocation-filled-icon {
+  position: absolute;
+  top: 374px;
+  left: 40px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.bxsphone-call-icon {
+  top: 0;
+  left: 0;
+}
+.div {
+  position: absolute;
+  top: 0;
+  left: 49px;
+}
+.bxsphone-call-parent {
+  top: 226px;
+  left: 40px;
+  width: 176px;
+  height: 24px;
+}
+.atharva-college-of,
+.bxsphone-call-parent,
+.icsharp-email-parent {
+  text-decoration: none;
+  position: absolute;
+  color: inherit;
+}
+.icsharp-email-parent {
+  top: 300px;
+  left: 40px;
+  width: 317px;
+  height: 24px;
+}
+.atharva-college-of {
+  top: 374px;
+  left: 89px;
+  display: inline-block;
+  width: 288px;
+}
+.say-something-to {
+  margin: 0;
+  position: absolute;
+  top: 88px;
+  left: 40px;
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  font-family: inherit;
+  color: #c9c9c9;
+}
+.rectangle-parent {
+  position: absolute;
+  top: 169px;
+  left: 124px;
+  border-radius: var(--br-81xl);
+  width: 491px;
+  height: 647px;
+  overflow: hidden;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+}
+.letter-send-1-icon {
+  position: absolute;
+  top: 647px;
+  left: 911.87px;
+  width: 264.78px;
+  height: 217px;
+  object-fit: cover;
+}
+.send-message {
+  position: relative;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--color-white);
+  text-align: center;
+}
+.contact-us-child,
+.send-message-wrapper {
+  border: 0;
+  position: absolute;
+  border-radius: var(--br-3xs);
+  color: #c9c9c9;
+}
+.send-message-wrapper {
+  cursor: pointer;
+  padding: 15px 48px;
+  background-color: var(--color-black);
+  top: 700px;
+  left: 1046px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.contact-us-child {
+  background-color: #1e1e1e;
+  top: 450px;
+  left: 682px;
+  width: 578px;
+  height: 147px;
+}
+.contact-us-item {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 361px;
+  left: 1000px;
+  border-radius: var(--br-31xl);
+  width: 261px;
+  height: 36px;
+}
+.email-id {
+  position: absolute;
+  top: 323px;
+  left: 1003px;
+  font-weight: 500;
+  display: inline-block;
+  width: 80px;
+}
+.contact-us-inner {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 362px;
+  left: 673px;
+  border-radius: var(--br-31xl);
+  width: 261px;
+  height: 36px;
+}
+.contact-no {
+  margin: 0;
+  position: absolute;
+  top: 323px;
+  left: 673px;
+  font-size: inherit;
+  font-weight: 500;
+  font-family: inherit;
+  display: inline-block;
+  width: 116px;
+}
+.last-name,
+.rectangle-input {
+  position: absolute;
+  left: 1003px;
+}
+.rectangle-input {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  top: 259px;
+  border-radius: var(--br-31xl);
+  width: 261px;
+  height: 36px;
+}
+.last-name {
+  margin: 0;
+  top: 221px;
+  font-size: inherit;
+  font-weight: 500;
+  font-family: inherit;
+}
+.contact-us-child1 {
+  border: 0;
+  background-color: var(--color-gainsboro);
+  position: absolute;
+  top: 259px;
+  left: 673px;
+  border-radius: var(--br-31xl);
+  width: 261px;
+  height: 36px;
+}
+.any-question-or,
+.first-name {
+  position: absolute;
+  font-weight: 500;
+}
+.first-name {
+  margin: 0;
+  top: 230px;
+  left: 673px;
+  font-size: inherit;
+  line-height: 20px;
+  font-family: inherit;
+}
+.any-question-or {
+  top: 0;
+  left: 0;
+}
+.contact,
+.contact-us1 {
+  margin: 0;
+  position: absolute;
+  font-family: inherit;
+}
+.contact {
+  top: 82px;
+  left: 481px;
+  width: 462px;
+  height: 27px;
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: #717171;
+}
+.contact-us1 {
+  top: 12px;
+  left: 599px;
+  font-size: 40px;
+  font-weight: 700;
+}
+.contact-us {
+  position: relative;
+  background-color: #fbfbfb;
+  width: 100%;
+  height: 874px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}

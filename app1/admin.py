@@ -15,8 +15,6 @@ class CartItemAdmin(admin.ModelAdmin):
     list_display = ('cart', 'product', 'quantity', 'price')
     
 
-
-
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('s_no', 'Name', 'Contact','Subject','Message')
