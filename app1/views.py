@@ -139,9 +139,9 @@ def add_to_cart(request, product_id):
     product = get_object_or_404(Product, product_id=product_id)
 
     try:
-        cart = Cart.objects.get(user=request.user)
+        cart = Cart.objects.get(user=request.user, is_paid=False)
     except Cart.DoesNotExist:
-        cart = Cart.objects.create(user=request.user)
+        cart = Cart.objects.create(user=request.user, is_paid=False)
 
     cart_item, created = CartItem.objects.get_or_create(
         product=product, cart=cart)
@@ -158,8 +158,10 @@ def add_to_cart(request, product_id):
     return redirect('cart')
 
 
+
 def invoice(request):
     cart_items = CartItem.objects.filter(cart__user=request.user)
+    cart_paid = Cart.objects.filter(user=request.user, is_paid=False)
 
     # Calculate total price
     total_price = sum(item.product.product_price *
@@ -170,6 +172,7 @@ def invoice(request):
         'total_price': total_price,
         'total_price_security': total_price_security,
         'items': cart_items,
+        'paid': cart_paid,
     }
 
     return render(request, 'invoice.html', context)
@@ -181,17 +184,26 @@ def calculate_total_price(cart_items):
     total_price = Decimal(total_price).quantize(Decimal('.01'))
     return total_price
 
-
+@login_required(login_url='/accounts/login/')
 def cart(request):
-    cart_items = CartItem.objects.filter(cart__user=request.user)
+    try:
+        cart = Cart.objects.get(user=request.user, is_paid=False)
+    except Cart.DoesNotExist:
+        cart = Cart.objects.create(user=request.user)
+    cart_items = cart.cartitem_set.all()
+    for item in cart_items:
+        item.save()
     total_price = calculate_total_price(cart_items)
     total_price_security = calculate_total_price(cart_items) + 1000
     context = {
         'items': cart_items,
         'total_price_security': total_price_security,
         'total_price': total_price,
-    }
+        }
     return render(request, 'cart.html', context)
+
+  
+
 
 
 def clear_cart(request):
@@ -205,3 +217,6 @@ def delete_from_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id)
     cart_item.delete()
     return redirect('cart')
+
+
+
