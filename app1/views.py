@@ -259,3 +259,34 @@ def delete_from_cart(request, cart_item_id):
 
 
 
+from django.shortcuts import render
+from .models import Product
+
+def product_list(request):
+    # Retrieve all products from the database
+    products = Product.objects.all()
+
+    # Define a function to sort the products based on selected criteria
+    def sort_products(sort_by):
+        if sort_by == 'price-asc':
+            return products.order_by('product_price')
+        elif sort_by == 'price-desc':
+            return products.order_by('-product_price')
+        elif sort_by == 'avail-asc':
+            return products.order_by('product_quantity')
+        elif sort_by == 'avail-desc':
+            return products.order_by('-product_quantity')
+        else:
+            return products
+
+    # Get the selected sort criteria from the request
+    sort_by = request.GET.get('sort-by', 'price-asc')
+
+    # Sort the products based on the selected criteria
+    products = sort_products(sort_by)
+
+    # Pass the sorted products to the HTML template
+    context = {'products': products, 'sort_by': sort_by}
+
+    return render(request, 'bicyclelist.html', context)
+

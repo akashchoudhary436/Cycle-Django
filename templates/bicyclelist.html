@@ -1,17 +1,47 @@
 <head>
   <title>Product List</title>
 </head>
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
 <link rel="stylesheet" href="{% static 'css/bicyclelist.css' %}" />
-
-
 
 <body>
   <section style="background-color: #eee">
     <div class="container py-5">
       <div class="row">
+        <div class="col-md-12 mb-4">
+          <div class="d-flex justify-content-end mb-3">
+        
+
+
+
+
+
+
+
+            <div class="nav-item dropdown">
+              <a class="btn btn-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Product List
+              </a>
+              <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+
+                  <li><a class="dropdown-item" href="{% url 'product_list' %}?sort-by=price-asc">Price (low to high)</a></li>
+                  <li><a class="dropdown-item" href="{% url 'product_list' %}?sort-by=price-desc">Price (high to low)</a></li>
+                  <li><a class="dropdown-item" href="{% url 'product_list' %}?sort-by=avail-asc">Availability (low to high)</a></li>
+                  <li><a class="dropdown-item" href="{% url 'product_list' %}?sort-by=avail-desc">Availability (high to low)</a></li>
+              </ul>
+            </div>
+
+
+
+
+
+
+          </div>
+        </div>
         {% for prod in products %}
-        <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+        <div class="col-md-12 col-lg-4 mb-4 mb-lg-0 prod-card">
           <div class="card">
             <div class="d-flex justify-content-between p-3">
               <h4 class="mb-0 fw-bold">{{ prod.product_name }}</h4>
@@ -29,12 +59,12 @@
                 <h5 class="mb-0">{{ prod.product_name }}</h5>
                 <h5 class="text-dark mb-0">Rs: {{ prod.product_price }}</h5>
               </div>
-              <div class="d-flex justify-content-between mb-2">
+              <div class="d-flex justify-content-between mb-2 avail" data-avail="{{ prod.product_quantity }}">
                 <p class="text-muted mb-0">
                   Available:
                   <span class="fw-bold">{{ prod.product_quantity }}</span>
                 </p>
-                <div class="mSs-auto text-warning">
+                <div class="ms-auto text-warning">
                   <form
                     action="{% url 'add_to_cart' prod.product_id %}"
                     method="post"
@@ -57,9 +87,35 @@
     </div>
   </section>
 </body>
-
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script>
+<script>
+  $(document).ready(function() {
+    // Define a function to sort the products based on selected criteria
+    function sortProducts() {
+      const sortVal = $('#sort-by').val().split('-');
+      const sortBy = sortVal[0];
+      const sortOrder = sortVal[1];
+      const sortedProds = $('.prod-card').sort(function(a, b) {
+        const aVal = $(a).find('.'+sortBy).data(sortBy);
+        const bVal = $(b).find('.'+sortBy).data(sortBy);
+        if (sortBy === 'avail') {
+          return sortOrder === 'asc' ? aVal - bVal : bVal - aVal;
+        } else {
+          return sortOrder === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+        }
+      });
+      $('.row').html(sortedProds);
+    }
+    
+    // Sort products on page load
+    sortProducts();
+    
+    // Listen for changes in the sort drop-down
+    $('#sort-by').on('change', function() {
+      sortProducts();
+    });
+  });
+  
+</script>
 
-      
-    {% endblock content %} 
+{% endblock %}
