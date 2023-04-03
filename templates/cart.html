@@ -84,6 +84,24 @@
                   {% endfor %}
                 </div>
 
+                <div class="float-right mt-4" style="position: absolute; top: 0; right: -1100;">
+                  <form method="post" action="{% url 'cart' %}">
+                    {% csrf_token %}
+                    <div class="form-group shadow p-3 mb-5 bg-white rounded animated fadeIn"style="max-width: 200px;">
+                      <label for="start_date">Start Date:</label>
+                      <input type="date" class="form-control" id="start_date" name="start_date" value="{{ cart.start_date|default_if_none:'' }}" required>
+                      <br>
+                      <label for="end_date">End Date:</label>
+                      <input type="date" class="form-control" id="end_date" name="end_date" value="{{ cart.end_date|default_if_none:'' }}" required>
+                      <br>
+                      <p>Number of days: {{ num_days }}</p>
+                      <br>
+                      <button type="submit" class="btn btn-primary">Update Dates</button>
+                    </div>
+                  </form>
+                </div>
+                
+                
                 <div class="col-lg-5">
                   <div class="card bg-primary text-white rounded-3">
                     <div class="card-body">
@@ -110,7 +128,8 @@
                       <button
                         type="button"
                         class="btn btn-info btn-block btn-lg"
-                        onclick="window.location.href='/invoice/'"
+                        id="rzp-button1"
+                        
                       >
                         <div class="d-flex justify-content-between">
                           <span>Rs: {{ total_price_security}} </span>
@@ -129,7 +148,7 @@
         </div>
       </div>
     </section>
-
+   
     <div class="p-4 text-center border-top mobile-hidden">
       <a
         class="btn btn-link px-3"
@@ -196,4 +215,48 @@
     }
   }
 </style>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  var options = {
+    "key": "rzp_test_dz1TRmxCYPsPUM",
+    "amount": "{{ razor_amount }}",
+    "currency": "INR",
+    "name": "Cycle",
+    "description": "Transaction",
+    "image": "https://example.com/your_logo",
+    "handler": function (response){
+        // redirect to invoice page if payment successful
+        window.location.href = "{% url 'invoice' %}?payment_id=" + response.razorpay_payment_id;
+    },
+    "prefill": {
+        "name": "{{ request.user.username }}",
+        "email": "{{ request.user.email }}",
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+
+
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+
 {% endblock %}

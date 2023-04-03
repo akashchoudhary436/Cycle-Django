@@ -104,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -136,5 +136,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 LOGIN_URL = 'login'
 
 
-razor_pay_key_id = 'rzp_test_XjRPp84oD0wJNP'
-key_secret = 'xs9bH7A3uaHhiKNiWaON1UOK'
+
+
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')
+RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
+
+
+RAZORPAY_KEY_ID = 'rzp_test_dz1TRmxCYPsPUM'
+RAZORPAY_KEY_SECRET = 'FWsE0SIWh4GDuDEw1kegUTQv'

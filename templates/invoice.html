@@ -30,6 +30,7 @@
         <ul class="list-unstyled mb-0">
           <li class="text-black mb-2">
             <b> Customer Name: {{ request.user|title }} </b>
+ 
           </li>
         </ul>
       </div>
@@ -67,13 +68,9 @@
           <li class="text-black mb-2">
             <div class="fs-5 text-black mb-4">
               <b>Total Cost: {{ total_price_security}}</b>
-              {% for paid in paid %}
-              {% if paid.is_paid %}
+              
                 <p>Paid.</p>
-              {% else %}
-                <p>Not Paid yet.</p>
-              {% endif %}
-            {% endfor %}
+             
 
 
             </div>

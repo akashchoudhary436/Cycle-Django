@@ -43,6 +43,7 @@ class Cart(models.Model):
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
     num_days = models.IntegerField(null=True)
+    price_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
 
     def __str__(self):

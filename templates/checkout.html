@@ -1,43 +1,6 @@
-{% extends 'base.html' %} 
-{% block content %} 
-  <h2>Check Out</h2>
-  <ul>
-    {% for item in items %}
-      <li>{{ item.quantity }} x {{ item.product.product_name }} - Rs. {{ item.product.product_price }}</li>
-    {% endfor %}
-  </ul>
-  <p>Total price: Rs. {{ total_price_security }}</p>
+<title>CheckOut</title>
+{% extends 'base.html' %} {% block content %} Check Out
 
-  <form id="checkout-form" action="{% url 'payment' %}" method="POST">
-    {% csrf_token %}
-    <input type="hidden" name="order_id" value="{{ order_id }}">
-    <script src="https://checkout.razorpay.com/v1/checkout.js"
-            data-key="{{ razorpay_key_id }}"
-            data-currency="INR"
-            data-order_id="{{ order_id }}"
+<a class="btn btn-primary" href="/invoice/" role="button">Invoice</a>
 
-
-            data-buttontext="Pay now"
-            data-name="My Store"
-            data-description="Payment"></script>
-  </form>
-
-{% block scripts %}
-  <script>
-    $('#checkout-form').submit(function(event) {
-      event.preventDefault();
-      $.ajax({
-        url: '{% url 'verify_payment' %}',
-        type: 'POST',
-        data: {
-          'order_id': '{{ order_id }}',
-          'csrfmiddlewaretoken': '{{ csrf_token }}'
-        },
-        success: function(response) {
-          window.location.href = "/thank-you/";
-        }
-      });
-    });
-  </script>
-{% endblock %}
 {% endblock %}
