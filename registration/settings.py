@@ -134,3 +134,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LOGIN_URL = 'login'
+
+
+razor_pay_key_id = 'rzp_test_XjRPp84oD0wJNP'
+key_secret = 'xs9bH7A3uaHhiKNiWaON1UOK'

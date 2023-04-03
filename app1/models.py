@@ -36,12 +36,17 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
+    cart_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_paid = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateField(null=True)
+    end_date = models.DateField(null=True)
+    num_days = models.IntegerField(null=True)
+
 
     def __str__(self):
-        return f'Cart-{self.id}'
+        return str(self.pk) 
 
 
 class CartItem(models.Model):
@@ -54,3 +59,5 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f'{self.product} ({self.quantity})'
+
+

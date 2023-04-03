@@ -19,6 +19,7 @@ urlpatterns = [
     path('logout/', views.LogoutPage, name='logout'),
     path('invoice/', views.invoice, name='inovice'),
     path('clear-cart/', views.clear_cart, name='clear_cart'),
+path('bicyclelist/', views.product_list, name='product_list'),
     path('add_to_cart/<int:product_id>/',
          views.add_to_cart, name='add_to_cart'),
     path('delete/<int:cart_item_id>/',
