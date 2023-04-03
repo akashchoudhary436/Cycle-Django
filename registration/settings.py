@@ -137,10 +137,5 @@ LOGIN_URL = 'login'
 
 
 
-
-RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')
-RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
-
-
-RAZORPAY_KEY_ID = 'Enter the ID key'
-RAZORPAY_KEY_SECRET = 'Enter the secret key'
+RAZORPAY_KEY_ID = 'rzp_test_dz1TRmxCYPsPUM'
+RAZORPAY_KEY_SECRET = 'FWsE0SIWh4GDuDEw1kegUTQv'
