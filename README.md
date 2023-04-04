@@ -8,7 +8,7 @@ Python 3.11.1
 razorpay
 
 to install pillow run command : python pillow.py
-to install pillow run command : python razorpay.py
+to install pillow run command : pip install razorpay
 To clone the project copy the http code and clone it
 
 for running he project 
