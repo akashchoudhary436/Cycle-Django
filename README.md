@@ -5,9 +5,10 @@ Before running project install
 django 4.1.5
 pillow  9.4.0
 Python 3.11.1
+razorpay
 
 to install pillow run command : python pillow.py
-
+to install pillow run command : python razorpay.py
 To clone the project copy the http code and clone it
 
 for running he project 
