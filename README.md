@@ -2,16 +2,11 @@
 
 
 Before running project install
-django 4.1.5
-pillow  9.4.0
 Python 3.11.1
-razorpay
 
-to install pillow run command : python pillow.py
-to install pillow run command : pip install razorpay
-To clone the project copy the http code and clone it
+After that find the requirements.txt file at that folder right click and open cmd and run command : pip install -r requirements.txt
 
-for running he project 
+for running the project 
 1)Open the Project folder
 2)Then find the manage.py file
 3)Right click on the folder where is the python.py file
