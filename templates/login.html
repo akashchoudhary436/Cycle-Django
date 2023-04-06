@@ -1,34 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- Design by foolishdeveloper.com -->
+  <head>
+    <!-- Design by foolishdeveloper.com -->
     <title>Login Page</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
     <!--Stylesheet-->
-    
-</head>
-<body>
+  </head>
+  <body>
     <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
     </div>
-    
+
     <form method="post">
-        <h3>Login Here</h3>
-        {% csrf_token %} 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Enter Username" id="username" name="username">
+      <h3>Login Here</h3>
+      {% csrf_token %}
+      <label for="username">Username</label>
+      <input
+        type="text"
+        placeholder="Enter Username"
+        id="username"
+        name="username"
+      />
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="pass">
-        <a href="/signup" class="stretched-link">Create Account</a>
+      <label for="password">Password</label>
+      <input type="password" placeholder="Password" id="password" name="pass" />
+      <a href="/signup" class="stretched-link">Create Account</a>
 
-        <button type="submit">Log In</button>
-       
+      <button type="submit">Log In</button>
     </form>
-</body>
+  </body>
 </html>

@@ -1,94 +1,145 @@
-
 {% load static %}
 <html lang="en">
   <head>
-   
-    <link rel="stylesheet" href="{% static 'css/header.css' %}">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Home </title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
 
-<!--Nav Bar Code-->
+    <!--Nav Bar Code-->
 
+    <style>
+      header {
+        background-color: #333;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+      }
 
-<style>
-  header {
-    background-color: #333;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
-  }
+      header a.nav-link {
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .nav .active {
+        font-weight: bold;
+        text-decoration: underline;
+        color: white;
+      }
+      .nav-link {
+        color: white;
+      }
 
-  header a.nav-link {
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .nav .active {
-    font-weight: bold;
-    text-decoration: underline;
-    color: white;
-  }
-  .nav-link {
-    color: white;
-  }
-  
-  header a.nav-link:hover {
-    color: #ffc107;
-    transition: color 0.3s ease-in-out;
-  }
-</style>
+      header a.nav-link:hover {
+        color: #ffc107;
+        transition: color 0.3s ease-in-out;
+      }
+    </style>
 
+    <header class="p-3 text-bg-dark animate__animated animate__fadeInDown">
+      <div class="container-fluid">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <a
+            href="/"
+            class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+          >
+            <svg
+              class="bi me-2"
+              width="40"
+              height="32"
+              role="img"
+              aria-label="Bootstrap"
+            >
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
 
+          <!-- HTML code -->
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <img
+              src="/media/logo.jpg"
+              alt="Logo"
+              width="90"
+              height="40"
+              class="me-2"
+            />
+            <li>
+              <a
+                href="/"
+                class="nav-link px-2 text-bg-white {% if request.path == '/' %}active{% endif %}"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="/aboutus"
+                class="nav-link px-2 text-bg-white {% if request.path == '/aboutus/' %}active{% endif %}"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="/bicyclelist"
+                class="nav-link px-2 text-bg-white {% if request.path == '/bicyclelist/' %}active{% endif %}"
+                >Bicycle List</a
+              >
+            </li>
+            <li>
+              <a
+                href="/contact"
+                class="nav-link px-2 text-bg-white {% if request.path == '/contact/' %}active{% endif %}"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
 
-
-<header class="p-3 text-bg-dark animate__animated animate__fadeInDown">
-  <div class="container-fluid">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-
-<!-- HTML code -->
-<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-  <img src="/media/logo.jpg" alt="Logo" width="90" height="40" class="me-2">
-  <li><a href="/" class="nav-link px-2 text-bg-white {% if request.path == '/' %}active{% endif %}">Home</a></li>
-  <li><a href="/aboutus" class="nav-link px-2 text-bg-white {% if request.path == '/aboutus/' %}active{% endif %}">About Us</a></li>
-  <li><a href="/bicyclelist" class="nav-link px-2 text-bg-white {% if request.path == '/bicyclelist/' %}active{% endif %}">Bicycle List</a></li>
-  <li><a href="/faqs" class="nav-link px-2 text-bg-white {% if request.path == '/faqs/' %}active{% endif %}">FAQs</a></li>
-  <li><a href="/contact" class="nav-link px-2 text-bg-white {% if request.path == '/contact/' %}active{% endif %}">Contact Us</a></li>
-</ul>
-
-      
-
-      <div class="text-end">
-        {% if user.is_authenticated %}
-        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Welcome <b>{{ request.user|upper }}</b>
-            </a>
-            <ul class="dropdown-menu shadow w-500px dropdown-menu-dark" data-bs-theme="dark">
-              <li><a class="dropdown-item rounded-5" href="/cart">Cart</a></li> 
-              <li><a class="dropdown-item rounded-5 " href="/logout">Logout</a></li> 
+          <div class="text-end">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Welcome <b>{{ request.user|upper }}</b>
+                </a>
+                <ul
+                  class="dropdown-menu shadow w-500px dropdown-menu-dark"
+                  data-bs-theme="dark"
+                >
+                  <li>
+                    <a class="dropdown-item rounded-5" href="/cart">Cart</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item rounded-5" href="/logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
             </ul>
-          </li>
-        </ul> 
-        {% else %}
-        <a button type="button" class="btn btn-outline-light " href="/login" role="button">Login</a>
-        {% endif %}
+            {% else %}
+            <a
+              button
+              type="button"
+              class="btn btn-outline-light"
+              href="/login"
+              role="button"
+              >Login</a
+            >
+            {% endif %}
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
-
-
-
-
-
-
-
-
-
-
-
+    </header>
+  </head>
+</html>

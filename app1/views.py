@@ -1,3 +1,6 @@
+from datetime import date, timedelta, datetime
+from .models import Product
+from django.shortcuts import render
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -52,20 +55,6 @@ def contact(request):
 
         # Render contact page if request method is not POST
         return render(request, 'contact.html')
-
-
-# View function for rendering FAQs page
-def faqs(request):
-    return render(request, 'FAQs.html')
-
-
-# View function for rendering checkout page
-def checkout(request):
-    return render(request, 'checkout.html')
-
-
-# View function for rendering invoice page
-
 
 # View function for rendering bicycle list page
 def bicyclelist(request):
@@ -159,7 +148,6 @@ def add_to_cart(request, product_id):
     return redirect('cart')
 
 
-
 def invoice(request):
     cart_items = CartItem.objects.filter(cart__user=request.user)
 
@@ -173,7 +161,8 @@ def invoice(request):
     num_days = cart.num_days if cart else 7
 
     # Calculate total price
-    total_price = sum(item.product.product_price * item.quantity for item in cart_items) * num_days
+    total_price = sum(item.product.product_price *
+                      item.quantity for item in cart_items) * num_days
     total_price_security = total_price + 1000
     context = {
         'total_price': total_price,
@@ -185,7 +174,6 @@ def invoice(request):
     return render(request, 'invoice.html', context)
 
 
-
 def calculate_total_price(cart_items):
     total_price = sum(item.product.product_price *
                       item.quantity for item in cart_items)
@@ -193,14 +181,13 @@ def calculate_total_price(cart_items):
     return total_price
 
 
-from datetime import date, timedelta,datetime
 @login_required(login_url='/accounts/login/')
 def cart(request):
     try:
         cart = Cart.objects.get(user=request.user, is_paid=False)
     except Cart.DoesNotExist:
         cart = Cart.objects.create(user=request.user, is_paid=False)
-        
+
     cart_items = cart.cartitem_set.all()
 
     if request.method == 'POST':
@@ -227,7 +214,8 @@ def cart(request):
         end_date = start_date + timedelta(days=7)
         cart.save()
 
-    total_price = sum(item.product.product_price * item.quantity for item in cart_items) * num_days
+    total_price = sum(item.product.product_price *
+                      item.quantity for item in cart_items) * num_days
     total_price_security = total_price + 1000
     cart.price_paid = total_price_security
     cart.save()
@@ -244,7 +232,6 @@ def cart(request):
     return render(request, 'cart.html', context)
 
 
-  
 def clear_cart(request):
     cart_items = CartItem.objects.filter(cart__user=request.user)
     cart_items.delete()
@@ -257,10 +244,6 @@ def delete_from_cart(request, cart_item_id):
     cart_item.delete()
     return redirect('cart')
 
-
-
-from django.shortcuts import render
-from .models import Product
 
 def product_list(request):
     # Retrieve all products from the database
@@ -289,4 +272,3 @@ def product_list(request):
     context = {'products': products, 'sort_by': sort_by}
 
     return render(request, 'bicyclelist.html', context)
-

@@ -1,12 +1,8 @@
 <head>
   <title>Invoice</title>
- </head>
-{% extends 'base.html' %} 
-
-{% block content %}
-
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/invoice.css' %}">
+</head>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/invoice.css' %}" />
 <section class="pb-4">
   <div class="custom-container">
     <div class="row align-items-center mb-5">
@@ -30,7 +26,6 @@
         <ul class="list-unstyled mb-0">
           <li class="text-black mb-2">
             <b> Customer Name: {{ request.user|title }} </b>
- 
           </li>
         </ul>
       </div>
@@ -68,18 +63,14 @@
           <li class="text-black mb-2">
             <div class="fs-5 text-black mb-4">
               <b>Total Cost: {{ total_price_security}}</b>
-              
-                <p>Paid.</p>
-             
 
-
+              <p>Paid.</p>
             </div>
           </li>
         </ul>
       </div>
     </div>
   </div>
-
 </section>
 
 {% endblock %}
