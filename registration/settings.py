@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    'app1',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,7 @@ ROOT_URLCONF = 'registration.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-       
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +72,12 @@ WSGI_APPLICATION = 'registration.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 # The DATABASES setting defines the database connections for the project.
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -122,7 +127,9 @@ MESSAGE_TAGS = {
 
 }
 
-
+STATICFILES_DIRS = [
+    BASE_DIR, "static",
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 

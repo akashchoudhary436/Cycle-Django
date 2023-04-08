@@ -14,3 +14,9 @@ for running the project
 5)Command Prompt will be open then run : python manage.py runserver 
 6)clcik on the http code and copy paste on google project will be open
 7) to make the super user(admin) follow the step 3 4  then run command : python manage.py createsuperuser
+
+
+
+Python 3.11.1
+Django 4.1.5
+razorpay

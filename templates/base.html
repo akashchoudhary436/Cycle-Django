@@ -1,4 +1,8 @@
+{% include "header.html" %}
 
+<!--Displaying the Alert messages.tag-->
+
+{% for message in messages %}
 <div
   class="alert mb-0 alert-dismissible fade show {% if message.tags == 'success' %}alert-success{% endif %} {% if message.tags == 'info' %}alert-info{% endif %} {% if message.tags == 'warning' %}alert-warning{% endif %} {% if message.tags == 'error' %}alert-danger{% endif %}"
   role="alert"
@@ -13,7 +17,8 @@
   ></button>
 </div>
 
-
+{% endfor %} {% block content %} {% endblock %}
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+{% include "footer.html" %}

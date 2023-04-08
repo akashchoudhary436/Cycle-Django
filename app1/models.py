@@ -11,7 +11,8 @@ class Contact(models.Model):
     Email = models.EmailField(max_length=50)
     Contact = models.CharField(max_length=10)
     Subject = models.CharField(max_length=50)
-
+    Message = models.TextField()
+    timeStamp = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
         return 'Message from ' + self.Name
@@ -22,7 +23,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
     product_name = models.CharField(max_length=50)
 
-
+    product_price = models.IntegerField()
     product_quantity = models.IntegerField()
     image = models.ImageField(upload_to="media")
 
@@ -40,8 +41,8 @@ class Cart(models.Model):
     is_paid = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     start_date = models.DateField(null=True)
-
- 
+    end_date = models.DateField(null=True)
+    num_days = models.IntegerField(null=True)
     price_paid = models.DecimalField(
         max_digits=10, decimal_places=2, default=0)
 
