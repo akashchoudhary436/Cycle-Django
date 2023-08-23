@@ -22,7 +22,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS is a list of valid hostnames for the site.
 # In production, it should be set to the domain name(s) the site will be served from.
-ALLOWED_HOSTS = ['3.88.86.86']
+ALLOWED_HOSTS = []
 
 # Application definition
 
